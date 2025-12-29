@@ -2,6 +2,51 @@
 
 The following are notes on website building, if you found this, no you didn't..
 
+3️⃣ Designing “Wandering” Links (This Is Subtle but Important)
+In a digital garden, links should feel like:
+  “You could go here next, if you want.”
+
+Not:
+  “CLICK THIS TO PROCEED.”
+
+Pattern A: Contextual Linking (Primary)
+Instead of navigation bars, use sentences:
+
+<p>
+  This work connects to ongoing questions about
+  <a href="notes/materials.html">materials</a> and
+  <a href="notes/process.html">process</a>.
+</p>
+
+This feels like thinking, not menuing.
+
+Pattern B: Soft “Back” Links
+At the bottom of pages, use gentle exits:
+
+<p class="back-link">
+  ← <a href="garden.html">return to the map</a>
+</p>
+
+
+Avoid:
+“Home”
+“Main menu”
+     Words matter here.
+
+4️⃣ Add a Quiet Disclaimer Footer (Signals Intentional Unfinishedness)
+At the bottom of notes pages (later) or even the garden index, add:
+
+<p class="note-meta">
+  This is a living document. It may change without notice.
+</p>
+
+This:
+protects you from perfectionism
+reframes incompleteness as practice
+signals confidence
+
+
+Footer for each post:
 <p class="note-meta">
   This is a living document. It may change without notice.
 </p>

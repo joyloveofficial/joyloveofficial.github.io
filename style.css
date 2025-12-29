@@ -1,44 +1,70 @@
-/* Body & basic typography */
+/* Base */
 body {
-  font-family: system-ui, sans-serif;
-  margin: 40px;
-  max-width: 800px;
-  line-height: 1.6;
-  color: #111;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 60px auto;
+  max-width: 720px;
+  line-height: 1.65;
+  color: #1a1a1a;
   background-color: #fff;
 }
 
 /* Headings */
-h1, h2, h3 {
-  font-weight: 400;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
+h1 {
+  font-size: 2.2em;
+  font-weight: 500;
+  margin-bottom: 0.6em;
 }
 
-/* Links */
-a {
-  color: #2a7ae2; /* soft blue */
-  text-decoration: none;
+h2 {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-top: 2.5em;
+  margin-bottom: 0.6em;
 }
+
+/* Paragraphs */
+p {
+  margin-bottom: 1.2em;
+}
+
+/* Links — wandering-friendly */
+a {
+  color: #2b6cb0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(43, 108, 176, 0.25);
+}
+
 a:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid rgba(43, 108, 176, 0.8);
 }
 
 /* Lists */
 ul {
   padding-left: 1.2em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
-/* Paragraphs */
-p {
-  margin-bottom: 1em;
+li {
+  margin-bottom: 0.4em;
 }
 
 /* Images */
 img {
   max-width: 100%;
   height: auto;
-  display: block;
-  margin-bottom: 0.5em;
+  margin: 1.5em 0 0.5em 0;
+}
+
+/* Garden metadata */
+.note-meta {
+  font-size: 0.85em;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1.5em;
+}
+
+/* Footer-like links */
+.back-link {
+  font-size: 0.9em;
+  margin-top: 3em;
 }

@@ -2,7 +2,31 @@
 
 The following are notes on website building, if you found this, no you didn't..
 
-3️⃣ Designing “Wandering” Links (This Is Subtle but Important)
+----
+
+A Garden Metaphor (If Helpful)
+
+<p> = soil (ideas grow here)
+<ul> = a bed
+<li> = individual plants
+
+Each has a role.
+
+One Last Useful Tip
+If you ever wonder:
+
+“Which tag should I use?”
+
+Ask:
+Is this a thought? → <p>
+Is this a group of things? → <ul>
+Is this one thing in that group? → <li>
+
+That mental model will carry you far.
+
+----
+
+“Wandering” Links (This Is Subtle but Important)
 In a digital garden, links should feel like:
   “You could go here next, if you want.”
 
@@ -27,13 +51,14 @@ At the bottom of pages, use gentle exits:
   ← <a href="garden.html">return to the map</a>
 </p>
 
-
 Avoid:
 “Home”
 “Main menu”
      Words matter here.
 
-4️⃣ Add a Quiet Disclaimer Footer (Signals Intentional Unfinishedness)
+---
+
+Quiet Disclaimer Footer (Signals Intentional Unfinishedness)
 At the bottom of notes pages (later) or even the garden index, add:
 
 <p class="note-meta">
@@ -45,10 +70,7 @@ protects you from perfectionism
 reframes incompleteness as practice
 signals confidence
 
+---
 
-Footer for each post:
-<p class="note-meta">
-  This is a living document. It may change without notice.
-</p>
 
 -->

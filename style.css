@@ -28,22 +28,20 @@ p {
 }
 
 /* Links — wandering-friendly */
-a {
-  color: #2b6cb0;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(43, 108, 176, 0.25);
 
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease,
-    opacity 0.2s ease;
+a {
+  color: #2f7d32;             /* calm green for text */
+  text-decoration: none;       /* no underline by default */
+  border-bottom: 1px solid rgba(47, 125, 50, 0.25); /* subtle “breathing” underline */
 }
 
 a:hover {
-  border-bottom-color: rgba(43, 108, 176, 0.8);
-  transform: translateY(-1px);
-  opacity: 0.95;
+  color: #1b5e20;             /* slightly darker green on hover */
+  text-decoration: underline;  /* underline appears on hover */
+  border-bottom-color: rgba(47, 125, 50, 0.8); /* underline strengthens */
+  transition: all 0.2s ease-in-out; /* smooth “breathing” effect */
 }
+
 
 /* Lists */
 ul {
@@ -57,7 +55,7 @@ li {
 
 /* Images */
 img {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
   margin: 1.5em 0 0.5em 0;
 }

@@ -32,13 +32,12 @@ p {
 a {
   color: #2f7d32;             /* calm green for text */
   text-decoration: none;       /* no underline by default */
-  border-bottom: 1px solid rgba(47, 125, 50, 0.3); /* subtle “breathing” underline */
-  transition: border-color 0.4s ease, color 0.4s ease;
+  transition: color 0.4s ease;
 }
 
 a:hover {
   color: #1b5e20;             /* slightly darker green on hover */
-  border-bottom-color: rgba(47, 125, 50, 0.6); /* underline strengthens */
+  text-decoration: none;       /* no underline by default */
   transition: all 0.4s ease-in-out; /* smooth “breathing” effect */
 }
 

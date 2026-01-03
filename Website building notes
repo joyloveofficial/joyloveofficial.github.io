@@ -4,6 +4,17 @@ The following are notes on website building, if you found this, no you didn't..
 
 ----
 
+A Helpful Way to Learn Going Forward
+When you see CSS, ask:
+
+- What is the resting state?
+- What changes on interaction?
+- How does it get from one to the other?
+
+If you can answer those three, you understand the code.
+
+----
+
 A Garden Metaphor (If Helpful)
 
 <p> = soil (ideas grow here)

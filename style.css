@@ -54,7 +54,7 @@ li {
 
 /* Images */
 img {
-  max-width: 80%;
+  max-width: 95%;
   height: auto;
   margin: 1.5em 0 0.5em 0;
 }
@@ -93,3 +93,21 @@ body {
   }
 }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.garden-item {
+  position: relative;
+}
+
+.gallery:hover .garden-item {
+  opacity: 0.35;
+  transition: opacity 0.3s ease;
+}
+
+.gallery:hover .garden-item:hover {
+  opacity: 1;
+}

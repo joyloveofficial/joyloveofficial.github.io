@@ -42,5 +42,26 @@
   </div>
 </div>
 
+<script>
+  const items = document.querySelectorAll('.garden-item');
+  const modal = document.getElementById('modal');
+  const title = document.getElementById('modal-title');
+  const text = document.getElementById('modal-text');
+  const close = document.getElementById('close');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      title.textContent = item.dataset.title;
+      text.textContent = item.dataset.text;
+      modal.classList.remove('hidden');
+    });
+  });
+
+  close.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+</script>
+
+  
 </body>
 </html>

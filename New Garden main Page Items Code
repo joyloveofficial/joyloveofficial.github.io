@@ -1,0 +1,16 @@
+<div class="garden-item"
+     data-title="Title here (bolded)"
+     data-text="Thinking about slowness, attention, and scale. Longer writing lives here.">
+
+  <img src="images/work1.jpg" alt="Field notes">
+
+  <div class="preview">
+    <strong>Field notes</strong>
+    <p>
+/*preview of writing here*/
+      Thinking about slowness, attention, and scale…    
+      <span class="read-more">read more</span>
+    </p>
+  </div>
+
+</div>

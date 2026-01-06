@@ -203,3 +203,6 @@ body {
   opacity: 0.8;
 }
 
+.post-content {
+  display: none;
+}

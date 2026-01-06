@@ -174,9 +174,9 @@ body {
 }
 
 .back-link {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
+  position: fixed;       /* stay relative to the viewport */
+  bottom: 1rem;          /* distance from bottom */
+  left: 1rem;            /* distance from left */
 
   font-size: 0.8rem;
   color: #2f7d32;
@@ -185,7 +185,7 @@ body {
   opacity: 0.6;
   transition: opacity 0.6s ease;
 
-  z-index: 9999; /* important */
+  z-index: 9999;         /* float above everything */
 }
 
 

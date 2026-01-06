@@ -112,22 +112,45 @@ body {
   opacity: 1;
 }
 
-.label {
-  position: absolute;
-  inset: 0;
+/* Garden item layout (image + text side by side) */
+.garden-item {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: #2f7d32;
-  background: rgba(255, 255, 255, 0.85);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
-.garden-item:hover .label {
+.preview {
+  max-width: 220px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.preview strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #2f7d32;
+}
+
+.preview p {
+  margin: 0;
+  color: #444;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: #2f7d32;
+  font-size: 0.8rem;
+}
+
+
+.garden-item:hover .preview {
   opacity: 1;
+  transform: translateY(0);
 }
 
 

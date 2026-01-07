@@ -195,7 +195,6 @@ img {
   display: none;                     /* hidden by default */
   position: fixed;
   inset: 0;                          /* top:0; bottom:0; left:0; right:0 */
-  background: rgba(0, 0, 0, 0.4);    /* dark overlay */
   align-items: flex-start;           /* stick modal to top, scroll if needed */
   justify-content: center;
   padding-top: 5vh;                  /* space from top browser UI */
@@ -267,7 +266,7 @@ body.modal-open {
 /* ===== BACK-LINK ===== */
 .back-link {
   position: fixed;
-  bottom: 2rem;
+  bottom: 1.5rem;
   left: 1rem;
 
   font-size: 0.8rem;

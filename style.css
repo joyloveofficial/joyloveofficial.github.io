@@ -107,7 +107,7 @@ img {
 /* Modern masonry layout with fallback for older browsers */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* min width 150px, flexible up to full width */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 300px)); /* min width 150px, flexible up to full width */
   gap: 1.5rem;
   transition: 0.4s ease;
 
@@ -145,7 +145,7 @@ img {
   gap: 0.5rem;
 
   /* Randomized sizing for organic feel */
-  grid-row-end: span var(--row-span, 12); /* default fallback for row span */
+  grid-row-end: auto
   width: 100%;
 }
 
@@ -156,10 +156,6 @@ img {
   border-radius: 4px;
   transition: transform 0.3s ease;
   cursor: pointer;
-
-  /* Vary height slightly for organic effect */
-  aspect-ratio: 4/3; /* default aspect ratio, can vary per image via inline style */
-  object-fit: cover;
 }
 
 .garden-item:hover img {

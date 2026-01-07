@@ -29,6 +29,15 @@ close.addEventListener('click', () => {
   modalBody.innerHTML = '';
 });
 
+/* --- Close modal when clicking outside content --- */
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active');
+    modalBody.innerHTML = '';
+  }
+});
+
+
 
 /* ===== BACK-LINK FADE BEHAVIOR ===== */
 const backLink = document.querySelector('.back-link');

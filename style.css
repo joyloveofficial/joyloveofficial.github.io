@@ -14,6 +14,8 @@ body {
   animation: fadeUp 0.7s ease-out forwards;
 }
 
+/* Keep in mind root font size is default 16px to rem = 16px */
+
 /* Makes body fill entire page */
 
 html {
@@ -36,23 +38,25 @@ html {
   }
 }
 
+/* changed all em to rem below this line */
+
 /* Headings */
 h1 {
-  font-size: 2.2em;
+  font-size: 2.2rem;
   font-weight: 500;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.6rem;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: 500;
-  margin-top: 2.5em;
-  margin-bottom: 0.6em;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
 }
 
 /* Paragraphs */
 p {
-  margin-bottom: 1.2em;
+  margin-bottom: 1.2rem;
 }
 
 /* Links */
@@ -70,28 +74,30 @@ a:hover {
 
 /* Lists */
 ul {
-  padding-left: 1.2em;
-  margin-bottom: 1.5em;
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 li {
-  margin-bottom: 0.4em;
+  margin-bottom: 0.4rem;
 }
 
 /* Images */
 img {
   max-width: 95%;
   height: auto;
-  margin: 1.5em 0 0.5em 0;
+  margin: 1.5rem 0 0.5rem 0;
 }
 
 /* Garden metadata */
 .note-meta {
-  font-size: 0.85em;
+  font-size: 0.85rem;
   color: #666;
   font-style: italic;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.5rem;
 }
+
+/* changed all em to rem above this line */
 
 /* ===== GALLERY ===== */
 .gallery {
@@ -261,7 +267,7 @@ body.modal-open {
 /* ===== BACK-LINK ===== */
 .back-link {
   position: fixed;
-  bottom: 1rem;
+  bottom: 2rem;
   left: 1rem;
 
   font-size: 0.8rem;

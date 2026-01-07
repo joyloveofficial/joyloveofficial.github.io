@@ -2,6 +2,17 @@
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modal-body');
 const close = document.getElementById('close');
+const modalOverlay = document.getElementById('modal-overlay');
+
+function closeModal() {
+  modal.classList.remove('active');
+  modalBody.innerHTML = '';
+  document.body.classList.remove('modal-open');
+
+  if (modalOverlay) {
+    modalOverlay.classList.add('notfaded');
+  }
+}
 
 /* --- Open modal by fetching post file --- */
 document.querySelectorAll('.garden-item').forEach(item => {
@@ -17,6 +28,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
       const html = await response.text();
       modalBody.innerHTML = html;
       modal.classList.add('active');
+      modalOverlay.classList.remove('notfaded');
       document.body.classList.add('modal-open');
     } catch (error) {
       modalBody.innerHTML = '<p>Sorry, this post could not be loaded.</p>';
@@ -35,30 +47,26 @@ document.querySelectorAll('.garden-item').forEach(item => {
   }
 });
 
-/* --- Close modal --- */
-close.addEventListener('click', () => {
-  modal.classList.remove('active');
-  modalBody.innerHTML = '';
-  document.body.classList.remove('modal-open');
-});
+/* --- Close modal via close button --- */
+close.addEventListener('click', closeModal);
 
 /* --- Close modal when clicking outside content --- */
 modal.addEventListener('click', (e) => {
   if (e.target === modal) {
-    modal.classList.remove('active');
-    modalBody.innerHTML = '';
-    document.body.classList.remove('modal-open');
+    closeModal();
   }
 });
 
 /* --- Close modal with Escape key --- */
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.classList.contains('active')) {
-    modal.classList.remove('active');
-    modalBody.innerHTML = '';
-    document.body.classList.remove('modal-open');
+    closeModal();
   }
 });
+
+/* --- Close modal by clicking overlay --- */
+modalOverlay.addEventListener('click', closeModal);
+
 
 /* forces modal closed on open to confirm error (delete later?) */
 

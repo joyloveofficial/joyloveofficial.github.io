@@ -5,7 +5,7 @@ body {
   width: 100%
   max-width: 1200px; /* Stretches to almost full viewport width */
   margin: 0 auto; /* Centers the content */
-  padding: 2rem 1rem;  /* breathing room */
+  padding: 2rem 2rem;  /* breathing room */
   line-height: 1.65;
   color: #1a1a1a;
   background-color: #fff;

@@ -9,63 +9,37 @@
 
   <h1>Welcome.</h1>
 
-  <main class="garden">
-    <div class="gallery">
+<main class="garden">
+  <div class="gallery">
 
-      <div class="garden-item">
-        <img src="images/work1.jpg" alt="Field notes" class="open-post">
+    <!-- Garden Item -->
+    <div class="garden-item" data-file="posts/post1.html">
+      <img src="images/work1.jpg" alt="Field notes" class="open-post">
 
-        <div class="preview">
-          <strong>Field notes</strong>
-          <p>
-            Thinking about slowness, attention, and scale…
-            <span class="read-more">read more</span>
-          </p>
-        </div>
-
-        <!-- FULL POST (hidden) -->
-        <div class="post-content" hidden>
-          <h2>Field notes</h2>
-          <p>
-            Thinking about slowness, attention, and scale.
-            Longer writing lives here.
-          </p>
-          <p>
-            You can add multiple paragraphs, images, links,
-            anything you want.
-          </p>
-          <img src="images/work1-detail.jpg" alt="">
-        </div>
+      <div class="preview">
+        <strong>Field Notes</strong>
+        <p>
+          Thinking about slowness, attention, and scale…
+          <span class="read-more">read more</span>
+        </p>
       </div>
-
-      <div class="garden-item">
-        <img src="images/work1.jpg" alt="Field notes" class="open-post">
-
-        <div class="preview">
-          <strong>Field notes</strong>
-          <p>
-            Thinking about slowness, attention, and scale…
-            <span class="read-more">read more</span>
-          </p>
-        </div>
-
-        <!-- FULL POST (hidden) -->
-        <div class="post-content" hidden>
-          <h2>Field notes</h2>
-          <p>
-            Thinking about slowness, attention, and scale.
-            Longer writing lives here.
-          </p>
-          <p>
-            You can add multiple paragraphs, images, links,
-            anything you want.
-          </p>
-          <img src="images/work1-detail.jpg" alt="">
-        </div>
-      </div>
-
     </div>
-  </main>
+
+    <!-- Another garden item -->
+    <div class="garden-item" data-file="posts/post2.html">
+      <img src="images/work2.jpg" alt="Another post" class="open-post">
+
+      <div class="preview">
+        <strong>Another Post</strong>
+        <p>
+          A short preview of this post…
+          <span class="read-more">read more</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</main>
 
   <!-- Modal -->
   <div id="modal" class="modal hidden">

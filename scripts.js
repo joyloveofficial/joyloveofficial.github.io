@@ -14,7 +14,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
       if (!response.ok) throw new Error('Post not found');
       const html = await response.text();
       modalBody.innerHTML = html;
-      modal.classList.remove('hidden');
+      modal.classList.add('active');
     } catch (error) {
       modalBody.innerHTML = '<p>Sorry, this post could not be loaded.</p>';
       modal.classList.remove('hidden');
@@ -25,7 +25,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
 
 /* --- Close modal --- */
 close.addEventListener('click', () => {
-  modal.classList.add('hidden');
+  modal.classList.remove('active');
   modalBody.innerHTML = '';
 });
 

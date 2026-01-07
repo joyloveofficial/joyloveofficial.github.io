@@ -1,4 +1,4 @@
-/* Base */
+/* ===== BASE STYLES ===== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 60px auto;
@@ -6,6 +6,24 @@ body {
   line-height: 1.65;
   color: #1a1a1a;
   background-color: #fff;
+
+  opacity: 0;
+  transform: translateY(6px);
+  animation: fadeUp 0.7s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* Headings */
@@ -27,20 +45,18 @@ p {
   margin-bottom: 1.2em;
 }
 
-/* Links — wandering-friendly */
-
+/* Links */
 a {
-  color: #2f7d32;             /* calm green for text */
-  text-decoration: none;       /* no underline by default */
+  color: #2f7d32;             /* calm green */
+  text-decoration: none;
   transition: color 0.4s ease;
 }
 
 a:hover {
-  color: #1b5e20;             /* slightly darker green on hover */
-  text-decoration: none;       /* no underline by default */
-  transition: all 0.4s ease-in-out; /* smooth “breathing” effect */
+  color: #1b5e20;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
 }
-
 
 /* Lists */
 ul {
@@ -67,32 +83,7 @@ img {
   margin-bottom: 1.5em;
 }
 
-/* Footer-like links */
-.back-link {
-  font-size: 0.9em;
-  margin-top: 3em;
-}
-
-body {
-  opacity: 0;
-  transform: translateY(6px);
-  animation: fadeUp 0.7s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-}
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
+/* ===== GALLERY ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -101,6 +92,9 @@ body {
 
 .garden-item {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
 .gallery:hover .garden-item {
@@ -112,14 +106,7 @@ body {
   opacity: 1;
 }
 
-/* Garden item layout (image + text side by side) */
-.garden-item {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
+/* Preview text on hover */
 .preview {
   max-width: 220px;
   font-size: 0.85rem;
@@ -147,56 +134,56 @@ body {
   font-size: 0.8rem;
 }
 
-
 .garden-item:hover .preview {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Full post content (hidden) */
+.post-content {
+  display: none;
+}
 
+/* ===== MODAL ===== */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10000;
 }
 
 .modal-content {
   background: white;
   padding: 2rem;
   max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.hidden {
-  display: none;
-}
-
+/* ===== BACK-LINK ===== */
 .back-link {
-  position: fixed;       /* stick to viewport */
-  bottom: 1rem;          /* distance from bottom */
-  left: 1rem;            /* distance from left */
-  
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+
   font-size: 0.8rem;
   color: #2f7d32;
   text-decoration: none;
 
-  opacity: 0.6;          /* default visible */
-  transition: opacity 0.6s ease;
-  z-index: 9999;         /* float above everything */
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+  z-index: 9999;
+}
+
+.back-link:hover {
+  opacity: 0.85;
 }
 
 .back-link.hidden {
   opacity: 0;
   pointer-events: none;
-}
-
-.back-link:hover {
-  opacity: 0.8;
-}
-
-
-.post-content {
-  display: none;
 }

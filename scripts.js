@@ -18,7 +18,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
       document.body.classList.add('modal-open');
     } catch (error) {
       modalBody.innerHTML = '<p>Sorry, this post could not be loaded.</p>';
-      modal.classList.remove('hidden');
+      modal.classList.add('active');
       console.error(error);
     }
   });

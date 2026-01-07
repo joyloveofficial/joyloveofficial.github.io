@@ -1,7 +1,7 @@
 /* ===== BASE STYLES ===== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  min-height: 100vh; /* Ensures full viewport height */
+  min-height: 90vh; /* Ensures full viewport height */
   width: 100%; /* Stretches to container width */
   max-width: 1200px; /* Limits max width on large screens */
   margin: 0 auto; /* Centers the content */

@@ -6,8 +6,10 @@ const close = document.getElementById('close');
 /* --- Open modal by fetching post file --- */
 document.querySelectorAll('.garden-item').forEach(item => {
   const image = item.querySelector('.open-post');
+  const readMore = item.querySelector('.read-more');
   const file = item.dataset.file;
 
+/* when image is clicked */
   image.addEventListener('click', async () => {
     try {
       const response = await fetch(file);
@@ -22,6 +24,15 @@ document.querySelectorAll('.garden-item').forEach(item => {
       console.error(error);
     }
   });
+});
+
+  // When "read more" is clicked
+  if (readMore) {
+    readMore.addEventListener('click', async (e) => {
+      e.stopPropagation();   /* prevents the parent element click from firing twice */
+      await openModal(file);
+    });
+  }
 });
 
 /* --- Close modal --- */
@@ -49,10 +60,10 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-/* forces modal closed on open to confirm error (delete later) */
+/* forces modal closed on open to confirm error (delete later?) */
 
 window.addEventListener('DOMContentLoaded', () => {
-  modal.classList.remove('active');  // make sure it starts hidden
+  modal.classList.remove('active');  /* make sure it starts hidden */
 });
 
 

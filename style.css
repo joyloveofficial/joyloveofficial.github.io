@@ -338,3 +338,21 @@ body.modal-open {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Subtle copyright at bottom-right */
+copyright {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  font-size: 0.8rem;
+  color: #999;
+  opacity: 0.4;          /* very subtle default */
+  pointer-events: none;
+  z-index: 9999;
+  font-family: system-ui, sans-serif;
+  transition: opacity 0.5s ease;
+}
+
+copyright:hover {
+  opacity: 0.8;          /* visible on hover */
+}

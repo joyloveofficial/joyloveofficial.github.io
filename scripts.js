@@ -95,3 +95,17 @@ document.querySelectorAll('.garden-item').forEach(item => {
     }, 400);
   });
 });
+
+/* ===== COPYRIGHT FADE ===== */
+const copyright = document.querySelector('copyright');
+let copyrightTimeout;
+
+window.addEventListener('scroll', () => {
+  copyright.style.opacity = 0.2;   // fade out while scrolling
+
+  clearTimeout(copyrightTimeout);
+  copyrightTimeout = setTimeout(() => {
+    copyright.style.opacity = 0.4; // fade back in after pause
+  }, 1200);
+});
+

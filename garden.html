@@ -88,59 +88,10 @@
   </div>
 </div>
 
-<script>
-  const modal = document.getElementById('modal');
-  const modalBody = document.getElementById('modal-body');
-  const close = document.getElementById('close');
-
-  document.querySelectorAll('.garden-item').forEach(item => {
-    const image = item.querySelector('.open-post');
-    const content = item.querySelector('.post-content');
-
-    image.addEventListener('click', () => {
-      modalBody.innerHTML = content.innerHTML;
-      modal.classList.remove('hidden');
-    });
-  });
-
-  close.addEventListener('click', () => {
-    modal.classList.add('hidden');
-    modalBody.innerHTML = '';
-  });
-</script>
-
-
-  <script>
-  const backLink = document.querySelector('.back-link');
-  let scrollTimeout;
-
-  window.addEventListener('scroll', () => {
-    backLink.classList.add('hidden');
-
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      backLink.classList.remove('hidden');
-    }, 1200); // reappear after pause
-  });
-</script>
-
-  <script>
-  const gardenItems = document.querySelectorAll('.garden-item');
-
-  gardenItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      backLink.classList.add('hidden');
-    });
-
-    item.addEventListener('mouseleave', () => {
-      setTimeout(() => {
-        backLink.classList.remove('hidden');
-      }, 800);
-    });
-  });
-</script>
-
 <a href="index.html" class="back-link">← back to introduction</a>
+
+<script src="scripts.js"></script>
+
   
 </body>
 </html>

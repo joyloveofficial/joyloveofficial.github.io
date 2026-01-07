@@ -15,6 +15,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
       const html = await response.text();
       modalBody.innerHTML = html;
       modal.classList.add('active');
+      document.body.classList.add('modal-open');
     } catch (error) {
       modalBody.innerHTML = '<p>Sorry, this post could not be loaded.</p>';
       modal.classList.remove('hidden');
@@ -27,6 +28,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
 close.addEventListener('click', () => {
   modal.classList.remove('active');
   modalBody.innerHTML = '';
+  document.body.classList.remove('modal-open');
 });
 
 /* --- Close modal when clicking outside content --- */
@@ -34,8 +36,19 @@ modal.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.classList.remove('active');
     modalBody.innerHTML = '';
+    document.body.classList.remove('modal-open');
   }
 });
+
+/* --- Close modal with Escape key --- */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('active')) {
+    modal.classList.remove('active');
+    modalBody.innerHTML = '';
+    document.body.classList.remove('modal-open');
+  }
+});
+
 
 
 

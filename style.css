@@ -12,6 +12,11 @@ body {
   animation: fadeUp 0.7s ease-out forwards;
 }
 
+html, body {
+  min-height: 100%;
+}
+
+
 @keyframes fadeUp {
   to {
     opacity: 1;

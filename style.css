@@ -161,12 +161,23 @@ img {
 
 .modal-content {
   background: white;
-  padding: 2rem;
+  padding: 2.5rem;
   max-width: 600px;
-  max-height: 90vh;
+  max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
+  border-radius: 6px;
 }
+
+.modal-content h2:first-child {
+  margin-top: 0;
+}
+
+/* scrolling of main screen stopped while popup open*/
+body.modal-open {
+  overflow: hidden;
+}
+
 
 /* ===== BACK-LINK ===== */
 .back-link {

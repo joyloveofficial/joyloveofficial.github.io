@@ -1,10 +1,11 @@
 /* ===== BASE STYLES ===== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  min-height: 80vh; /* Ensures almost full viewport height */
-  width: 90%
+  min-height: 100vh; /* Ensures almost full viewport height */
+  width: 100%
   max-width: 1200px; /* Stretches to almost full viewport width */
   margin: 0 auto; /* Centers the content */
+  padding: 2rem 1rem;  /* breathing room */
   line-height: 1.65;
   color: #1a1a1a;
   background-color: #fff;
@@ -19,10 +20,13 @@ body {
 /* Makes body fill entire page */
 
 html {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 
 @keyframes fadeUp {
   to {
@@ -276,6 +280,7 @@ body.modal-open {
 /* The overlay covers the entire viewport behind the modal post with a dim background */
 .modalOverlay {
     position: fixed;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -285,8 +290,8 @@ body.modal-open {
     z-index: 999; /* Ensure it is above the main content but below the popup content */
 }
 
-#modalOverlay.notfaded {
-  display: none;
+.modalOverlay.active {
+  display: block;
 }
 
 

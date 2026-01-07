@@ -2,7 +2,8 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 80vh; /* Ensures almost full viewport height */
-  max-width: 80vh; /* Stretches to almost full viewport width */
+  width: 90%
+  max-width: 1200px; /* Stretches to almost full viewport width */
   margin: 0 auto; /* Centers the content */
   line-height: 1.65;
   color: #1a1a1a;
@@ -284,7 +285,7 @@ body.modal-open {
     z-index: 999; /* Ensure it is above the main content but below the popup content */
 }
 
-.modalOverlay.notfaded {
+#modalOverlay.notfaded {
   display: none;
 }
 

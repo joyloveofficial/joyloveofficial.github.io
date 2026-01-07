@@ -149,6 +149,7 @@ img {
   display: block;
   color: #2f7d32;                    /* signature green */
   font-weight: 600;
+  margin-top: 0.5rem;    /* making caption appear slightly lower?? */
   margin-bottom: 0.25rem;
 }
 

@@ -12,10 +12,6 @@ body {
   animation: fadeUp 0.7s ease-out forwards;
 }
 
-.hidden {
-  display: none;
-}
-
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -152,11 +148,15 @@ img {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
-  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  display: none; /* hidden by default */
   align-items: center;
   justify-content: center;
-  z-index: 9998;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
 }
 
 .modal-content {

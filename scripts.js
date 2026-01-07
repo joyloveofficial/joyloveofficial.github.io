@@ -9,7 +9,6 @@ function closeModal() {
   modalBody.innerHTML = '';
   document.body.classList.remove('modal-open');
   modalOverlay.classList.remove('active');
-  }
 }
 
 /* --- Open modal by fetching post file --- */

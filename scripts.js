@@ -97,7 +97,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
 });
 
 /* ===== COPYRIGHT FADE ===== */
-const copyright = document.querySelector('copyright');
+const copyright = document.querySelector('.copyright');
 let copyrightTimeout;
 
 window.addEventListener('scroll', () => {

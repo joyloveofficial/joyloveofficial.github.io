@@ -20,8 +20,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
   const readMore = item.querySelector('.read-more');
   const file = item.dataset.file;
 
-/* when image is clicked */
-  image.addEventListener('click', async () => {
+  async function openPost() {
     try {
       const response = await fetch(file);
       if (!response.ok) throw new Error('Post not found');
@@ -35,17 +34,18 @@ document.querySelectorAll('.garden-item').forEach(item => {
       modal.classList.add('active');
       console.error(error);
     }
-  });
-});
+  }
 
-  // When "read more" is clicked
+  image.addEventListener('click', openPost);
+
   if (readMore) {
-    readMore.addEventListener('click', async (e) => {
-      e.stopPropagation();   /* prevents the parent element click from firing twice */
-      await openModal(file);
+    readMore.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openPost();
     });
   }
 });
+
 
 /* --- Close modal via close button --- */
 close.addEventListener('click', closeModal);

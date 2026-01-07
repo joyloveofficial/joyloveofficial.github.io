@@ -165,9 +165,20 @@ img {
 .read-more {
   display: inline-block;
   margin-top: 0.25rem;
-  color: #2f7d32;
+  padding: 0.15em 0.5em;        /* tiny padding for button feel */
+  background-color: rgba(47, 125, 50, 0.1); /* soft green background */
+  color: #2f7d32;               /* green text */
   font-size: 0.8rem;
+  border-radius: 4px;           /* subtle rounded corners */
+  cursor: pointer;                                     /* this might look weird, look into it later if needed */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.read-more:hover {
+  background-color: rgba(47, 125, 50, 0.25);  /* slightly darker on hover */
+  color: #1b5e20;
+}
+
 
 /* Show preview on hover */
 .garden-item:hover .preview {

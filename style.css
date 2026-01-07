@@ -173,7 +173,7 @@ img {
   margin-top: 0;
 }
 
-/* scrolling of main screen stopped while popup open*/
+/* Prevent background scroll when modal is open */
 body.modal-open {
   overflow: hidden;
 }

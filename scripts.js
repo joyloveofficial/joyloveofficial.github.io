@@ -10,7 +10,7 @@ function closeModal() {
   document.body.classList.remove('modal-open');
 
   if (modalOverlay) {
-    modalOverlay.classList.add('notfaded');
+    modalOverlay.classList.add('active');
   }
 }
 
@@ -27,7 +27,7 @@ document.querySelectorAll('.garden-item').forEach(item => {
       const html = await response.text();
       modalBody.innerHTML = html;
       modal.classList.add('active');
-      modalOverlay.classList.remove('notfaded');
+      modalOverlay.classList.remove('active');
       document.body.classList.add('modal-open');
     } catch (error) {
       modalBody.innerHTML = '<p>Sorry, this post could not be loaded.</p>';

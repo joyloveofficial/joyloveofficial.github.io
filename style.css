@@ -95,13 +95,6 @@ img {
   gap: 1.5rem;
 }
 
-.garden-item {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
 .gallery:hover .garden-item {
   opacity: 0.35;
   transition: opacity 0.3s ease;
@@ -111,25 +104,51 @@ img {
   opacity: 1;
 }
 
-/* Preview text on hover */
+/* Full post content (hidden) */
+.post-content {
+  display: none;
+}
+
+/* ===== GARDEN ITEM + HOVER PREVIEW ===== */
+.garden-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;  /* image on top by default */
+  gap: 0.5rem;
+}
+
+.garden-item img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.garden-item:hover img {
+  transform: scale(1.02); /* subtle zoom on hover */
+}
+
+/* Preview box for hover text */
 .preview {
-  max-width: 220px;
-  font-size: 0.85rem;
-  line-height: 1.4;
   opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(6px);        /* slide slightly from below */
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  font-size: 0.85rem;
+  color: #444;
+  max-width: 100%;
+  background: none;                  /* transparent behind text */
 }
 
 .preview strong {
   display: block;
+  color: #2f7d32;                    /* signature green */
+  font-weight: 600;
   margin-bottom: 0.25rem;
-  color: #2f7d32;
 }
 
 .preview p {
   margin: 0;
-  color: #444;
 }
 
 .read-more {
@@ -139,14 +158,24 @@ img {
   font-size: 0.8rem;
 }
 
+/* Show preview on hover */
 .garden-item:hover .preview {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: 0.15s;           /* slight delay for smoother effect */
 }
 
-/* Full post content (hidden) */
-.post-content {
-  display: none;
+/* Layout tweak for larger screens */
+@media (min-width: 600px) {
+  .garden-item {
+    flex-direction: row;           /* image left, preview right */
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .preview {
+    max-width: 220px;              /* limit width for text */
+  }
 }
 
 /* ===== MODAL ===== */

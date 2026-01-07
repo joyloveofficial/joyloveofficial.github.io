@@ -274,8 +274,6 @@ body.modal-open {
 
 /* The overlay covers the entire viewport behind the modal post with a dim background */
 .modal-overlay {
-    /* Initially hidden */
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -284,6 +282,10 @@ body.modal-open {
     pointer-events: none; /* Allows clicks to pass through the overlay to underlying elements */
     background-color: rgba(255, 255, 255, 0.5); /* This color dims the background (white with 50% opacity) */
     z-index: 999; /* Ensure it is above the main content but below the popup content */
+}
+
+.modal-overlay.notfaded {
+  display: none;
 }
 
 

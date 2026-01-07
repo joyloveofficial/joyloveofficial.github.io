@@ -104,12 +104,24 @@ img {
 /* changed all em to rem above this line */
 
 /* ===== GALLERY ===== */
+/* Modern masonry layout with fallback for older browsers */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* min width 150px, flexible up to full width */
   gap: 1.5rem;
+
+  /* Fallback for older browsers */
+  grid-auto-rows: 10px; /* small row size for fallback spacing */
 }
 
+/* Masonry support in modern browsers */
+@supports (grid-template-rows: masonry) {
+  .gallery {
+    grid-template-rows: masonry; /* modern CSS masonry */
+  }
+}
+
+/* Dim other items when hovering */
 .gallery:hover .garden-item {
   opacity: 0.35;
   transition: opacity 0.3s ease;
@@ -130,14 +142,23 @@ img {
   display: flex;
   flex-direction: column;  /* image on top by default */
   gap: 0.5rem;
+
+  /* Randomized sizing for organic feel */
+  grid-row-end: span var(--row-span, 12); /* default fallback for row span */
+  width: 100%;
 }
 
+/* Random heights for items: we can tweak via inline style or CSS variable if needed */
 .garden-item img {
   width: 100%;
   display: block;
   border-radius: 4px;
   transition: transform 0.3s ease;
   cursor: pointer;
+
+  /* Vary height slightly for organic effect */
+  aspect-ratio: 4/3; /* default aspect ratio, can vary per image via inline style */
+  object-fit: cover;
 }
 
 .garden-item:hover img {
@@ -159,7 +180,7 @@ img {
   display: block;
   color: #2f7d32;                    /* signature green */
   font-weight: 600;
-  margin-top: 0.5rem;    /* making caption appear slightly lower?? */
+  margin-top: 0.5rem;    
   margin-bottom: 0.25rem;
 }
 
@@ -174,8 +195,8 @@ img {
   background-color: rgba(47, 125, 50, 0.1); /* soft green background */
   color: #2f7d32;               /* green text */
   font-size: 0.8rem;
-  border-radius: 4px;           /* subtle rounded corners */
-  cursor: pointer;                                     /* this might look weird, look into it later if needed */
+  border-radius: 4px;           
+  cursor: pointer;             
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -183,7 +204,6 @@ img {
   background-color: rgba(47, 125, 50, 0.25);  /* slightly darker on hover */
   color: #1b5e20;
 }
-
 
 /* Show preview on hover */
 .garden-item:hover .preview {
@@ -198,6 +218,9 @@ img {
     flex-direction: row;           /* image left, preview right */
     align-items: flex-start;
     gap: 1rem;
+
+    /* Random widths for organic effect */
+    width: calc(150px + (var(--width-random, 150) * 1px)); /* variable width up to ~300px */
   }
 
   .preview {

@@ -2,7 +2,7 @@
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modal-body');
 const close = document.getElementById('close');
-const modalOverlay = document.getElementById('modal-overlay');
+const modalOverlay = document.getElementById('modalOverlay');
 
 function closeModal() {
   modal.classList.remove('active');
@@ -66,13 +66,6 @@ document.addEventListener('keydown', (e) => {
 
 /* --- Close modal by clicking overlay --- */
 modalOverlay.addEventListener('click', closeModal);
-
-
-/* forces modal closed on open to confirm error (delete later?) */
-
-window.addEventListener('DOMContentLoaded', () => {
-  modal.classList.remove('active');  /* make sure it starts hidden */
-});
 
 
 

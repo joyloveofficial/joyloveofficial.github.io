@@ -109,6 +109,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* min width 150px, flexible up to full width */
   gap: 1.5rem;
+  transition: 0.4s ease;
 
   /* Fallback for older browsers */
   grid-auto-rows: 10px; /* small row size for fallback spacing */
@@ -124,7 +125,7 @@ img {
 /* Dim other items when hovering */
 .gallery:hover .garden-item {
   opacity: 0.35;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease:
 }
 
 .gallery:hover .garden-item:hover {

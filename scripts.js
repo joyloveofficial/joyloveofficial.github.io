@@ -49,6 +49,11 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+/* forces modal closed on open to confirm error (delete later) */
+
+window.addEventListener('DOMContentLoaded', () => {
+  modal.classList.remove('active');  // make sure it starts hidden
+});
 
 
 

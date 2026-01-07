@@ -2,8 +2,7 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 80vh; /* Ensures almost full viewport height */
-  width: 80vh; /* Stretches to almost full viewport width */
-  max-width: 1200px; /* Limits max width on large screens */
+  max-width: 80vh; /* Stretches to almost full viewport width */
   margin: 0 auto; /* Centers the content */
   line-height: 1.65;
   color: #1a1a1a;

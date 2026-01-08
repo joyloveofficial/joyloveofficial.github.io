@@ -120,7 +120,7 @@ img {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 300px)); /* min width 150px, flexible up to full width */
-  gap: 1.5rem;
+  gap: 2.5rem;
   transition: 0.4s ease;
 
   /* Fallback for older browsers */
@@ -176,15 +176,25 @@ img {
 
 /* Preview box for hover text */
 .preview {
-  position: relative;
-  z-index: 888;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+
+  max-width: 260px;
+  padding: 0.5rem 0.6rem;
+
   opacity: 0;
-  transform: translateY(6px);        /* slide slightly from below */
+  transform: translateX(12px);
   transition: opacity 0.35s ease, transform 0.35s ease;
+
   font-size: 0.85rem;
   color: #444;
-  max-width: 100%;
-  background: none;                  /* transparent behind text */
+
+  z-index: 888; /* floats above nearby posts */
+  
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(2px);
+  border-radius: 4px;
 }
 
 .preview strong {
@@ -220,7 +230,7 @@ img {
 .garden-item:hover .preview {
   z-index: 10;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
   transition-delay: 0.15s;           /* slight delay for smoother effect */
 }
 
@@ -372,3 +382,32 @@ body.modal-open {
 .copyright:hover {
   opacity: 0.8;          /* visible on hover */
 }
+
+/* ===== MOBILE PREVIEW OVERRIDE ===== */
+@media (max-width: 599px) {
+  .preview {
+    position: relative;      /* inline below the image */
+    bottom: auto;
+    right: auto;
+
+    opacity: 0;
+    transform: translateY(-12px);  /* slide in from above */
+    transition: opacity 0.35s ease, transform 0.35s ease;
+
+    max-width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.5rem 0.6rem;
+
+    /* background + blur like desktop */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 4px;
+  }
+
+  /* Reveal on hover/tap */
+  .garden-item:hover .preview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

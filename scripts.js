@@ -14,7 +14,7 @@ function closeModal() {
 /* --- Open modal by fetching post file --- */
 document.querySelectorAll('.garden-item').forEach(item => {
   const image = item.querySelector('.open-post');
-  const readMore = item.querySelector('.read-more');
+  const seeMore = item.querySelector('.see-more');
   const file = item.dataset.file;
 
   async function openPost() {
@@ -35,8 +35,8 @@ document.querySelectorAll('.garden-item').forEach(item => {
 
   image.addEventListener('click', openPost);
 
-  if (readMore) {
-    readMore.addEventListener('click', (e) => {
+  if (seeMore) {
+    seeMore.addEventListener('click', (e) => {
       e.stopPropagation();
       openPost();
     });

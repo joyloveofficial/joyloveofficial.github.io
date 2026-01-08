@@ -137,7 +137,7 @@ img {
 /* Dim other items when hovering */
 .gallery:hover .garden-item {
   opacity: 0.35;
-  transition: opacity 0.4s ease:
+  transition: opacity 0.4s ease;
 }
 
 .gallery:hover .garden-item:hover {
@@ -157,7 +157,7 @@ img {
   gap: 0.5rem;
 
   /* Randomized sizing for organic feel */
-  grid-row-end: auto
+  grid-row-end: auto;
   width: 100%;
 }
 
@@ -386,28 +386,31 @@ body.modal-open {
 /* ===== MOBILE PREVIEW OVERRIDE ===== */
 @media (max-width: 599px) {
   .preview {
-    position: relative;      /* inline below the image */
-    bottom: auto;
-    right: auto;
+    position: absolute;        /* sit over the garden item */
+    bottom: -0.25rem;          /* slightly below the image */
+    left: 0;
+    width: 100%;               /* match image width */
 
     opacity: 0;
-    transform: translateY(-12px);  /* slide in from above */
+    transform: translateY(8px); /* slide in a tiny bit from below */
     transition: opacity 0.35s ease, transform 0.35s ease;
 
     max-width: 100%;
-    margin-top: 0.35rem;
     padding: 0.5rem 0.6rem;
 
-    /* background + blur like desktop */
+    font-size: 0.85rem;
+    color: #444;
+
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(2px);
     border-radius: 4px;
+    z-index: 888;              /* above other content */
   }
 
-  /* Reveal on hover/tap */
-  .garden-item:hover .preview {
+  /* Reveal on tap/hover */
+  .garden-item:hover .preview,
+  .garden-item.tap-show .preview {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0);  /* slides into place */
   }
 }
-

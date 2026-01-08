@@ -176,9 +176,9 @@ img {
 
 /* Preview box for hover text */
 .preview {
+  position: relative;
+  z-index: 888;
   opacity: 0;
-  position: relative;   /* enables z-index */
-  z-index: 888;          /* floats above nearby garden items */
   transform: translateY(6px);        /* slide slightly from below */
   transition: opacity 0.35s ease, transform 0.35s ease;
   font-size: 0.85rem;
@@ -189,8 +189,6 @@ img {
 
 .preview strong {
   display: block;
-  position: relative;   /* enables z-index */
-  z-index: 888;          /* floats above nearby garden items */
   color: #2f7d32;                    /* signature green */
   font-weight: 600;
   margin-top: 0.4rem;    
@@ -203,8 +201,6 @@ img {
 
 .see-more {
   display: inline-block;
-  position: relative;   /* enables z-index */
-  z-index: 888;          /* floats above nearby garden items */
   margin-top: 0.25rem;
   padding: 0.15em 0.5em;        /* tiny padding for button feel */
   background-color: rgba(47, 125, 50, 0.1); /* soft green background */
@@ -222,6 +218,7 @@ img {
 
 /* Show preview on hover */
 .garden-item:hover .preview {
+  z-index: 10;
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.15s;           /* slight delay for smoother effect */

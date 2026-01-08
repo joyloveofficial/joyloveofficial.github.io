@@ -183,7 +183,7 @@ img {
   padding: 0.5rem 0.6rem;
 
   opacity: 0;
-  transform: translateY(-8px);  /* tiny slide down */
+  transform: translateY(8px);  /* tiny slide down */
   transition: opacity 0.35s ease, transform 0.35s ease;
 
   font-size: 0.85rem;
@@ -396,7 +396,7 @@ body.modal-open {
     color: #444;
 
     opacity: 0;
-    transform: translateY(-8px); /* slide down a tiny bit from above */
+    transform: translateY(8px); /* slide down a tiny bit from above */
     transition: opacity 0.35s ease, transform 0.35s ease;
 
     background: rgba(255, 255, 255, 0.85);

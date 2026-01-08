@@ -16,25 +16,4 @@
     </p>
   </div>
 
-  <!-- Full post content (hidden, used for popup) -->
-  <div class="post-content" hidden>
-    <h2>Field notes</h2>
-
-    <p>
-      These notes come from walking, waiting, and resisting the urge
-      to produce too quickly.
-    </p>
-
-    <p>
-      I’m interested in how attention shifts when scale is reduced,
-      and when outcomes are allowed to remain unclear.
-    </p>
-
-    <img src="images/field-notes-detail.jpg" alt="Detail from field notes">
-
-    <p>
-      This work is ongoing.
-    </p>
-  </div>
-
 </div>

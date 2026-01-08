@@ -233,7 +233,8 @@ img {
   }
 
   .preview {
-    max-width: 220px;              /* limit width for text */
+    min-width: 260px;   /* 👈 makes preview feel more breathable */
+    max-width: 320px;   /* 👈 allows it to grow a bit */
   }
 }
 

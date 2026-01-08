@@ -185,7 +185,7 @@ img {
   margin: 0;
 }
 
-.read-more {
+.see-more {
   display: inline-block;
   margin-top: 0.25rem;
   padding: 0.15em 0.5em;        /* tiny padding for button feel */
@@ -197,7 +197,7 @@ img {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.read-more:hover {
+.see-more:hover {
   background-color: rgba(47, 125, 50, 0.25);  /* slightly darker on hover */
   color: #1b5e20;
 }

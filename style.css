@@ -63,6 +63,18 @@ p {
   margin-bottom: 1.2rem;
 }
 
+/* alignment */
+.right {
+  display: block;      /* makes it its own line */
+  text-align: right;
+}
+
+.center {
+  display: block;      /* makes it its own line */
+  text-align: center;
+}
+
+
 /* Links */
 a {
   color: #2f7d32;             /* calm green */

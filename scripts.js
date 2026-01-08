@@ -109,3 +109,49 @@ window.addEventListener('scroll', () => {
   }, 1200);
 });
 
+/* ===== MOBILE TAP PREVIEW WITH AUTO-FADE ===== */
+function setupMobilePreviews() {
+  const isMobile = window.matchMedia("(max-width: 599px)").matches;
+  if (!isMobile) return;
+
+  const gardenItems = document.querySelectorAll('.garden-item');
+  let fadeTimeout;
+
+  gardenItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Ignore clicks on modal triggers or "see more"
+      if (e.target.classList.contains('open-post') || e.target.classList.contains('see-more')) return;
+
+      clearTimeout(fadeTimeout);
+
+      // Hide all other previews
+      gardenItems.forEach(i => i.classList.remove('tap-show'));
+
+      // Show this item's preview
+      item.classList.add('tap-show');
+
+      // Auto-hide after 4 seconds with smooth fade
+      fadeTimeout = setTimeout(() => {
+        item.classList.remove('tap-show');
+      }, 4000);
+    });
+  });
+
+  // Tapping outside closes previews immediately
+  document.addEventListener('click', (e) => {
+    const clickedItem = e.target.closest('.garden-item');
+    if (!clickedItem) {
+      gardenItems.forEach(i => i.classList.remove('tap-show'));
+      clearTimeout(fadeTimeout);
+    }
+  });
+}
+
+// Initialize on load
+setupMobilePreviews();
+
+// Re-run on window resize for orientation changes
+window.addEventListener('resize', () => {
+  setupMobilePreviews();
+});
+

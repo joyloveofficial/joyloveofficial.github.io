@@ -189,9 +189,11 @@ img {
 
 .preview strong {
   display: block;
+  position: relative;   /* enables z-index */
+  z-index: 888;          /* floats above nearby garden items */
   color: #2f7d32;                    /* signature green */
   font-weight: 600;
-  margin-top: 0.5rem;    
+  margin-top: 0.4rem;    
   margin-bottom: 0.25rem;
 }
 
@@ -201,6 +203,8 @@ img {
 
 .see-more {
   display: inline-block;
+  position: relative;   /* enables z-index */
+  z-index: 888;          /* floats above nearby garden items */
   margin-top: 0.25rem;
   padding: 0.15em 0.5em;        /* tiny padding for button feel */
   background-color: rgba(47, 125, 50, 0.1); /* soft green background */

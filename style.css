@@ -379,64 +379,84 @@ body.modal-open {
   opacity: 0.8;          /* visible on hover */
 }
 
-/* ===== MOBILE PREVIEW OVERRIDE ===== */
+/* ===== MOBILE OVERRIDES (max-width: 599px) ===== */
 @media (max-width: 599px) {
-    .garden-item {
-    flex-direction: column; /* image on top, preview below */
+  /* Gallery spacing for mobile grid */
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* smaller images for grid */
+    gap: 1.5rem; /* slightly wider spacing between items */
   }
+
+  /* Garden items stacked for mobile but still allow preview below image */
+  .garden-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  /* Preview box below the image */
   .preview {
-    position: relative;        /* flows naturally below image */
-    width: 100%;               /* match image width */
+    position: relative;       /* inline under the image */
+    bottom: auto;
+    right: auto;
+
+    opacity: 0;
+    transform: translateY(-8px); /* slide in from above image */
+    transition: opacity 0.35s ease, transform 0.35s ease;
+
     max-width: 100%;
     margin-top: 0.35rem;
     padding: 0.5rem 0.6rem;
 
-    font-size: 0.85rem;
-    color: #444;
-
-    opacity: 0;
-    transform: translateY(-8px); /* slide down a tiny bit from above */
-    transition: opacity 0.35s ease, transform 0.35s ease;
-
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(2px);
     border-radius: 4px;
-    z-index: 888;              /* above other content */
+    z-index: 888; /* ensures preview floats above nearby elements */
   }
 
-  /* Reveal on tap/hover */
-  .garden-item:hover .preview,
-  .garden-item.tap-show .preview {
-    opacity: 1;
-    transform: translateY(0);  /* slides into place */
-  }
-}
-
-/* ===== MOBILE GRID TWEAK ===== */
-@media (max-width: 599px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1.25rem; /* slightly tighter spacing on mobile */
-  }
-  .garden-item img {
-    max-width: 100%;
-    margin: 0; /* removes extra vertical spacing */
-  }
-}
-@media (max-width: 599px) {
-  .garden-item img {
-    border-radius: 6px;
-    cursor: zoom-in; /* subtle hint that it’s tappable */
-  }
-}
-@media (hover: none) {
-  .garden-item:hover img {
-    transform: none;
-  }
-}
-@media (max-width: 599px) {
+  /* Reveal preview on tap/hover */
+  .garden-item.tap-show .preview,
   .garden-item.preview-active .preview {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* See-more button inside preview for mobile */
+  .see-more {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 0.15em 0.5em;
+    background-color: rgba(47, 125, 50, 0.1);
+    color: #2f7d32;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .see-more:hover {
+    background-color: rgba(47, 125, 50, 0.25);
+    color: #1b5e20;
+  }
+
+  /* Hide back-link on mobile */
+  .back-link {
+    display: none;
+  }
+
+  /* Mobile copyright positioning */
+  .copyright {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    color: #999;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 9999;
+    text-align: center;
+    transition: opacity 0.5s ease;
   }
 }

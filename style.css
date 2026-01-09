@@ -385,10 +385,9 @@ body.modal-open {
   }
   .preview {
     position: relative;        /* flows naturally below image */
-    bottom: auto;         
-    right: auto;
     width: 100%;               /* match image width */
     max-width: 100%;
+    margin-top: 0.35rem;
     padding: 0.5rem 0.6rem;
 
     font-size: 0.85rem;

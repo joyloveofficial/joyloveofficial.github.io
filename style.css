@@ -462,3 +462,39 @@ body.modal-open {
     transition: opacity 0.5s ease;
   }
 }
+
+/* ===== MOBILE: AGGRESSIVE FONT SCALING FOR POSTS ===== */
+@media (max-width: 599px) {
+  .modal-content {
+    /* Dynamically scale font from 0.7rem to 0.85rem based on viewport width */
+    font-size: clamp(0.7rem, 4vw, 0.85rem);
+    line-height: 1.35;       /* slightly tighter line spacing to save space */
+  }
+
+  /* Headings inside posts */
+  .modal-content h2 {
+    font-size: clamp(0.95rem, 5vw, 1.1rem);
+    line-height: 1.25;
+  }
+
+  .modal-content h1 {
+    font-size: clamp(1.3rem, 6vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  /* Paragraph spacing */
+  .modal-content p {
+    margin-bottom: 0.7rem;   /* slightly tighter spacing for dense content */
+  }
+
+  /* Optional: make lists more compact */
+  .modal-content ul {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-content li {
+    margin-bottom: 0.3rem;
+  }
+}
+

@@ -109,49 +109,71 @@ window.addEventListener('scroll', () => {
   }, 1200);
 });
 
-/* ===== MOBILE TAP PREVIEW WITH AUTO-FADE ===== */
-function setupMobilePreviews() {
-  const isMobile = window.matchMedia("(max-width: 599px)").matches;
-  if (!isMobile) return;
+/* ===== MOBILE: TAP OR PRESS FOR PREVIEW, TAP AGAIN FOR MODAL ===== */
+let activeGardenItem = null;
+let pressTimer = null;
+const PRESS_DELAY = 200; // ms until press counts as "hold"
 
-  const gardenItems = document.querySelectorAll('.garden-item');
-  let fadeTimeout;
+document.querySelectorAll('.garden-item').forEach(item => {
+  const image = item.querySelector('.open-post');
 
-  gardenItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      // Ignore clicks on modal triggers or "see more"
-      if (e.target.classList.contains('open-post') || e.target.classList.contains('see-more')) return;
+  /* ---- PRESS & HOLD (preview while holding) ---- */
+  image.addEventListener('touchstart', (e) => {
+    if (!window.matchMedia('(max-width: 599px)').matches) return;
 
-      clearTimeout(fadeTimeout);
-
-      // Hide all other previews
-      gardenItems.forEach(i => i.classList.remove('tap-show'));
-
-      // Show this item's preview
-      item.classList.add('tap-show');
-
-      // Auto-hide after 4 seconds with smooth fade
-      fadeTimeout = setTimeout(() => {
-        item.classList.remove('tap-show');
-      }, 4000);
-    });
+    pressTimer = setTimeout(() => {
+      // Show preview while pressing
+      clearActivePreview();
+      item.classList.add('preview-active');
+      activeGardenItem = item;
+    }, PRESS_DELAY);
   });
 
-  // Tapping outside closes previews immediately
-  document.addEventListener('click', (e) => {
-    const clickedItem = e.target.closest('.garden-item');
-    if (!clickedItem) {
-      gardenItems.forEach(i => i.classList.remove('tap-show'));
-      clearTimeout(fadeTimeout);
+  image.addEventListener('touchend', () => {
+    clearTimeout(pressTimer);
+
+    // If modal did not open, hide preview on release
+    if (activeGardenItem === item && !item.dataset.modalOpened) {
+      item.classList.remove('preview-active');
+      activeGardenItem = null;
     }
+
+    item.dataset.modalOpened = '';
   });
-}
 
-// Initialize on load
-setupMobilePreviews();
+  /* ---- TAP LOGIC ---- */
+  image.addEventListener('click', (e) => {
+    if (!window.matchMedia('(max-width: 599px)').matches) return;
 
-// Re-run on window resize for orientation changes
-window.addEventListener('resize', () => {
-  setupMobilePreviews();
+    // First tap → preview
+    if (activeGardenItem !== item) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      clearActivePreview();
+      item.classList.add('preview-active');
+      activeGardenItem = item;
+      return;
+    }
+
+    // Second tap → modal
+    item.dataset.modalOpened = 'true';
+    activeGardenItem = null;
+    item.classList.remove('preview-active');
+    // modal opens naturally via existing openPost()
+  });
 });
 
+/* ---- Tap anywhere else closes preview ---- */
+document.addEventListener('touchstart', (e) => {
+  const item = e.target.closest('.garden-item');
+  if (!item) {
+    clearActivePreview();
+  }
+});
+
+function clearActivePreview() {
+  document.querySelectorAll('.garden-item.preview-active')
+    .forEach(i => i.classList.remove('preview-active'));
+  activeGardenItem = null;
+}

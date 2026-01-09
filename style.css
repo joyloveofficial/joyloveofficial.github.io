@@ -405,7 +405,7 @@ body.modal-open {
     transform: translateY(-8px); /* slide in from above image */
     transition: opacity 0.35s ease, transform 0.35s ease;
 
-    max-width: 100%;
+    max-width: 90%;
     margin-top: 0.35rem;
     padding: 0.5rem 0.6rem;
 
@@ -420,6 +420,7 @@ body.modal-open {
   .garden-item.preview-active .preview {
     opacity: 1;
     transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease; /* ensure smooth slide */
   }
 
   /* See-more button inside preview for mobile */

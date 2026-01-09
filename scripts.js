@@ -109,7 +109,36 @@ window.addEventListener('scroll', () => {
   }, 1200);
 });
 
-/* ===== MOBILE: TAP OR PRESS FOR PREVIEW, TAP AGAIN FOR MODAL ===== */
+/* ===== MOBILE: COPYRIGHT FADE ON SCROLL ===== */
+function setupMobileCopyrightFade() {
+  const isMobile = window.matchMedia("(max-width: 599px)").matches;
+  if (!isMobile) return;
+
+  const copyright = document.querySelector('.copyright');
+  let copyrightTimeout;
+
+  window.addEventListener('scroll', () => {
+    if (!copyright) return;
+
+    // Fade out while scrolling
+    copyright.style.opacity = 0.2;
+
+    // Fade back in after scroll stops
+    clearTimeout(copyrightTimeout);
+    copyrightTimeout = setTimeout(() => {
+      copyright.style.opacity = 0.4;
+    }, 2400);
+  });
+}
+
+// Initialize on load
+setupMobileCopyrightFade();
+
+// Re-run on resize/orientation change
+window.addEventListener('resize', setupMobileCopyrightFade);
+
+
+/* ===== MOBILE: PRESS FOR PREVIEW, TAP FOR MODAL ===== */
 let activeGardenItem = null;
 let pressTimer = null;
 const PRESS_DELAY = 200; // ms until press counts as "hold"
@@ -132,13 +161,11 @@ document.querySelectorAll('.garden-item').forEach(item => {
   image.addEventListener('touchend', () => {
     clearTimeout(pressTimer);
 
-    // If modal did not open, hide preview on release
-    if (activeGardenItem === item && !item.dataset.modalOpened) {
+    // Hide preview on release if modal did not open
+    if (activeGardenItem === item) {
       item.classList.remove('preview-active');
       activeGardenItem = null;
     }
-
-    item.dataset.modalOpened = '';
   });
 
   /* ---- TAP LOGIC ---- */
@@ -157,21 +184,22 @@ document.querySelectorAll('.garden-item').forEach(item => {
     }
 
     // Second tap → modal
-    item.dataset.modalOpened = 'true';
     activeGardenItem = null;
     item.classList.remove('preview-active');
-    // modal opens naturally via existing openPost()
+    // modal opens naturally via your existing openPost() listener
   });
 });
 
 /* ---- Tap anywhere else closes preview ---- */
 document.addEventListener('touchstart', (e) => {
+  if (e.targetTouches.length > 1) return; // ignore multi-touch gestures
   const item = e.target.closest('.garden-item');
   if (!item) {
     clearActivePreview();
   }
 });
 
+/* ---- Clear any active preview ---- */
 function clearActivePreview() {
   document.querySelectorAll('.garden-item.preview-active')
     .forEach(i => i.classList.remove('preview-active'));

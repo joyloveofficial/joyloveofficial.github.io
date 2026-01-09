@@ -205,3 +205,19 @@ function clearActivePreview() {
     .forEach(i => i.classList.remove('preview-active'));
   activeGardenItem = null;
 }
+
+/* ===== DISABLE IMAGE CONTEXT MENU / DOWNLOAD ===== */
+document.querySelectorAll('.garden-item img.open-post').forEach(img => {
+  
+  // Prevent right-click context menu (desktop)
+  img.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  // Prevent long-press menu on mobile
+  img.addEventListener('touchstart', (e) => {
+    // Disable gestures that trigger “save image / share”
+    e.preventDefault(); 
+  });
+
+  // Optional: block dragging images (desktop)
+  img.setAttribute('draggable', 'false');
+});

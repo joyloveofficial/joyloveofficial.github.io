@@ -233,17 +233,18 @@ img {
 /* Layout tweak for larger screens */
 @media (min-width: 600px) {
   .garden-item {
-    flex-direction: row;           /* image left, preview right */
+    flex-direction: column;           /* image left, preview right */
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.5rem; /* space between image and preview */
 
     /* Random widths for organic effect */
     width: calc(150px + (var(--width-random, 150) * 1px)); /* variable width up to ~300px */
   }
 
   .preview {
-    min-width: 260px;   /* 👈 makes preview feel more breathable */
-    max-width: 320px;   /* 👈 allows it to grow a bit */
+    min-width: 100%;   /* expand to full width under image */
+    max-width: 100%;   /* keep under image */
+    margin-top: 0.35rem; /* breathing room from image */
   }
 }
 

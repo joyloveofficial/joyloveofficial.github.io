@@ -411,3 +411,32 @@ body.modal-open {
     transform: translateY(0);  /* slides into place */
   }
 }
+
+/* ===== MOBILE GRID TWEAK ===== */
+@media (max-width: 599px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.25rem; /* slightly tighter spacing on mobile */
+  }
+  .garden-item img {
+    max-width: 100%;
+    margin: 0; /* removes extra vertical spacing */
+  }
+}
+@media (max-width: 599px) {
+  .garden-item img {
+    border-radius: 6px;
+    cursor: zoom-in; /* subtle hint that it’s tappable */
+  }
+}
+@media (hover: none) {
+  .garden-item:hover img {
+    transform: none;
+  }
+}
+@media (max-width: 599px) {
+  .garden-item.preview-active .preview {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

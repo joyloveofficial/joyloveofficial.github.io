@@ -176,10 +176,9 @@ img {
 
 /* Preview box for hover text */
 .preview {
-  position: absolute;       /* sits over the garden item */
-  bottom: -0.25rem;         /* slightly below image edge */
-  right: 0.5rem;            /* small margin from right */
+  position: relative;
   max-width: 260px;         /* keeps text readable */
+  margin-top: 0.35rem;
   padding: 0.5rem 0.6rem;
 
   opacity: 0;

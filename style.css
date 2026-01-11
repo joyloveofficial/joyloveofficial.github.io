@@ -179,7 +179,6 @@ img {
   position: relative;
   flex-basis: 100%;       /* 👈 forces new row */
   max-width: 260px;         /* keeps text readable */
-  margin-top: 0.35rem;
   padding: 0.5rem 0.6rem;
 
   opacity: 0;

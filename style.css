@@ -74,6 +74,18 @@ p {
   text-align: center;
 }
 
+/* Automatically applies hanging indent to all paragraphs inside this container */
+.poem-container p {
+  padding-left: 2rem;
+  text-indent: -2rem;
+  margin-bottom: 0.2rem; /* A tiny bit of space between lines */
+  line-height: 1.5;
+}
+
+/* Use this class just once per stanza to create a gap */
+.poem-container .stanza-break {
+  margin-bottom: 1.5rem;
+}
 
 /* Links */
 a {
@@ -271,6 +283,9 @@ img {
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   position: relative;                /* for close button */
   box-sizing: border-box;
+
+  overflow-wrap: break-word;        
+  word-wrap: break-word;             
 }
 
 /* Modal close button */
@@ -462,6 +477,7 @@ body.modal-open {
 /* ===== MOBILE: AGGRESSIVE FONT SCALING FOR POSTS ===== */
 @media (max-width: 599px) {
   .modal-content {
+    padding: 1.25rem;
     /* Dynamically scale font from 0.7rem to 0.85rem based on viewport width */
     font-size: clamp(0.7rem, 4vw, 0.85rem);
     line-height: 1.35;       /* slightly tighter line spacing to save space */

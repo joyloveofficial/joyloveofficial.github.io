@@ -155,7 +155,7 @@ img {
   position: relative;
   display: flex;
   flex-direction: column;  /* image on top by default */
-  gap: 0.5rem;
+  gap: .75rem;
 
   /* Masonry item setup */
   break-inside: avoid;     /* Prevents items from splitting across columns */

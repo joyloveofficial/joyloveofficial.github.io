@@ -29,7 +29,7 @@ async function openPost(file) {
   }
 }
 
-/* ===== DESKTOP BEHAVIOR ===== */
+/* ===== CONSOLIDATED CLICK BEHAVIOR (DESKTOP & MOBILE) ===== */
 document.querySelectorAll('.garden-item').forEach(item => {
   const image = item.querySelector('.open-post');
   const seeMore = item.querySelector('.see-more');
@@ -39,14 +39,29 @@ document.querySelectorAll('.garden-item').forEach(item => {
   image.setAttribute('draggable', 'false');
   image.addEventListener('contextmenu', e => e.preventDefault());
 
-  // Desktop click opens modal
+  // Handle image clicks for both mobile and desktop
   image.addEventListener('click', e => {
-    if (window.matchMedia('(min-width: 600px)').matches) {
+    const isMobile = window.matchMedia('(max-width: 599px)').matches;
+
+    if (isMobile) {
+      // MOBILE LOGIC: First tap = preview, Second tap = open
+      if (!item.classList.contains('preview-active')) {
+        e.preventDefault();
+        e.stopPropagation();
+        clearActivePreview();
+        item.classList.add('preview-active'); // Show preview
+      } else {
+        // It's already active (second tap), open the modal
+        item.classList.remove('preview-active');
+        openPost(file);
+      }
+    } else {
+      // DESKTOP LOGIC: Direct click opens modal
       openPost(file);
     }
   });
 
-  // See more button also opens modal
+  // See more button opens modal directly (works on both desktop and mobile)
   if (seeMore) {
     seeMore.addEventListener('click', e => {
       e.stopPropagation();
@@ -54,6 +69,19 @@ document.querySelectorAll('.garden-item').forEach(item => {
     });
   }
 });
+
+// Mobile: Tap outside closes preview
+document.addEventListener('touchstart', e => {
+  if (!window.matchMedia('(max-width: 599px)').matches) return;
+  const item = e.target.closest('.garden-item');
+  if (!item) clearActivePreview();
+});
+
+function clearActivePreview() {
+  document.querySelectorAll('.garden-item.preview-active').forEach(i => {
+    i.classList.remove('preview-active');
+  });
+}
 
 /* ===== MODAL CLOSE ===== */
 close.addEventListener('click', closeModal);
@@ -102,71 +130,4 @@ if (copyright) {
       copyright.style.opacity = 0.4;
     }, 1200);
   });
-}
-
-/* ===== MOBILE OVERRIDES (PRESS & TAP PREVIEWS) ===== */
-let activeGardenItem = null;
-let pressTimer = null;
-const PRESS_DELAY = 200; // ms until press counts as "hold"
-
-document.querySelectorAll('.garden-item').forEach(item => {
-  const image = item.querySelector('.open-post');
-  const file = item.dataset.file;
-
-  // Mobile: press & hold preview
-  image.addEventListener('touchstart', e => {
-    if (!window.matchMedia('(max-width: 599px)').matches) return;
-
-    pressTimer = setTimeout(() => {
-      clearActivePreview();
-      item.classList.add('preview-active');
-      activeGardenItem = item;
-    }, PRESS_DELAY);
-  });
-
-  image.addEventListener('touchend', e => {
-    if (!window.matchMedia('(max-width: 599px)').matches) return;
-
-    clearTimeout(pressTimer);
-
-    if (activeGardenItem === item && !item.dataset.modalOpened) {
-      item.classList.remove('preview-active');
-      activeGardenItem = null;
-    }
-
-    item.dataset.modalOpened = '';
-  });
-
-  // Mobile: tap once for preview, tap again for modal
-  image.addEventListener('click', e => {
-    if (!window.matchMedia('(max-width: 599px)').matches) return;
-
-    if (activeGardenItem !== item) {
-      e.preventDefault();
-      e.stopPropagation();
-      clearActivePreview();
-      item.classList.add('preview-active');
-      activeGardenItem = item;
-      return;
-    }
-
-    // Second tap → modal
-    item.dataset.modalOpened = 'true';
-    activeGardenItem = null;
-    item.classList.remove('preview-active');
-    openPost(file);
-  });
-});
-
-// Tap outside closes preview
-document.addEventListener('touchstart', e => {
-  if (!window.matchMedia('(max-width: 599px)').matches) return;
-
-  const item = e.target.closest('.garden-item');
-  if (!item) clearActivePreview();
-});
-
-function clearActivePreview() {
-  document.querySelectorAll('.garden-item.preview-active').forEach(i => i.classList.remove('preview-active'));
-  activeGardenItem = null;
 }

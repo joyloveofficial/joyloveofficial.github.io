@@ -116,22 +116,11 @@ img {
 /* changed all em to rem above this line */
 
 /* ===== GALLERY ===== */
-/* Modern masonry layout with fallback for older browsers */
+/* CSS Columns for reliable masonry layout */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 300px)); /* min width 150px, flexible up to full width */
-  gap: 2rem;
+  column-width: 220px; /* Optimal width for your desktop columns */
+  column-gap: 2rem;    /* Space between the columns */
   transition: 0.4s ease;
-
-  /* Fallback for older browsers */
-  grid-auto-rows: 10px; /* small row size for fallback spacing */
-}
-
-/* Masonry support in modern browsers */
-@supports (grid-template-rows: masonry) {
-  .gallery {
-    grid-template-rows: masonry; /* modern CSS masonry */
-  }
 }
 
 /* Dim other items when hovering */
@@ -156,8 +145,9 @@ img {
   flex-direction: column;  /* image on top by default */
   gap: 0.5rem;
 
-  /* Randomized sizing for organic feel */
-  grid-row-end: auto;
+  /* Masonry item setup */
+  break-inside: avoid;     /* Prevents items from splitting across columns */
+  margin-bottom: 2rem;     /* Vertical space between items (since column-gap only does horizontal) */
   width: 100%;
 }
 
@@ -182,6 +172,7 @@ img {
   padding: 0.5rem 0.6rem;
 
   opacity: 0;
+  pointer-events: none;
   transform: translateY(-8px);  /* tiny slide down */
   transition: opacity 0.35s ease, transform 0.35s ease;
 
@@ -208,6 +199,7 @@ img {
 /* Show preview on hover */
 .garden-item:hover .preview {
   opacity: 1;
+  pointer-events: auto;
   transform: translateY(0);          /* slides into place */
   transition-delay: 0.15s;           /* slight delay for smoother effect */
 }
@@ -381,10 +373,14 @@ body.modal-open {
 
 /* ===== MOBILE OVERRIDES (max-width: 599px) ===== */
 @media (max-width: 599px) {
-  /* Gallery spacing for mobile grid */
+/* Gallery spacing for mobile columns */
   .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* smaller images for grid */
-    gap: 1.5rem; /* slightly wider spacing between items */
+    column-width: 140px; /* Smaller columns for mobile */
+    column-gap: 1.5rem;  /* Slightly tighter horizontal spacing */
+  }
+  
+  .garden-item {
+    margin-bottom: 1.5rem; /* Match vertical spacing to the horizontal gap */
   }
 
   /* Garden items stacked for mobile but still allow preview below image */
@@ -419,6 +415,7 @@ body.modal-open {
   .garden-item.tap-show .preview,
   .garden-item.preview-active .preview {
     opacity: 1;
+    pointer-events: auto;
     transform: translateY(0);
     transition: opacity 0.35s ease, transform 0.35s ease; /* ensure smooth slide */
   }

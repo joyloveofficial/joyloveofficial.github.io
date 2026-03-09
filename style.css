@@ -2,7 +2,7 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh; /* Ensures almost full viewport height */
-  width: 100%
+  width: 100%;
   max-width: 1200px; /* Stretches to almost full viewport width */
   margin: 0 auto; /* Centers the content */
   padding: 2rem 2rem;  /* breathing room */
